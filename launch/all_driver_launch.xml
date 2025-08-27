@@ -1,0 +1,13 @@
+<launch>
+    <arg name="launch_sbg" default="true"/>
+    <arg name="launch_ntrip_client" default="true"/>
+    <arg name="launch_dvl" default="true"/>
+    <arg name="launch_isss" default="false"/>
+    <arg name="launch_succorfish" default="true"/>
+
+    <include if="$(var launch_sbg)" file="$(find-pkg-share sbg_driver)/launch/sbg_device_launch.py"/>
+    <include if="$(var launch_ntrip_client)" file="$(find-pkg-share ntrip_client)/ntrip_client_launch.py"/>
+    <include if="$(var launch_dvl)" file="$(find-pkg-share nucleus_driver_ros2)/launch/nucleus_driver_DVL_setup.launch.py"/>
+    <include if="$(var launch_isss)" file="$(find-pkg-share isss_ros2_driver)/launch/isss_driver.launch.py"/>
+    <include if="$(var launch_succorfish)" file="$(find-pkg-share serial_ping_pkg)/launch/serial_ping_node.launch"/>
+</launch>
